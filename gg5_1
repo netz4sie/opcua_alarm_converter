@@ -1,0 +1,15 @@
+#!/bin/bash
+PROG=alarmCon
+#gcc ${PROG}.cpp -o $PROG -lstdc++ -lm
+
+cd /data/jenkins/opcua/ttt/
+FI=`ls -1 *.log`
+cd -
+for i in $FI
+do
+echo $i
+cat /data/jenkins/opcua/ttt/$i | grep -v FileName | ./$PROG  >$i.data.csv
+grep Change $i.data.csv >$i.change.csv
+grep -v Change $i.data.csv >$i.csv
+#exit
+done

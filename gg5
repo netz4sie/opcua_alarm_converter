@@ -1,0 +1,4 @@
+#!/bin/bash
+PROG=alarmCon
+gcc ${PROG}.cpp -o $PROG -lstdc++ -lm
+cat 06MCO87210.2024.data.csv | grep -v FileName | ./$PROG  cos
